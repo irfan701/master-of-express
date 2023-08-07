@@ -1,18 +1,21 @@
 const express = require('express')
-const handle=require('./handle')
+const {mountpath} = require("express/lib/application");
+
+
 const app = express();
+const admin = express();
 
-app.locals.title = "My App"
 
-//Method 1
 app.get('/', (req, res) => {
-    console.log(app.locals.title)
-    res.send("This is Home page")
+    res.send("welcome to application home")
 })
 
-//Method 2
-app.get('/handle',handle)
+admin.get('/dashboard', (req, res) => {
+    console.log(admin.mountpath)
+    res.send("welcome to admin dashboard")
+})
 
+app.use('/admin',admin)
 app.listen(3000, () => {
     console.log('listening on port 3000')
 })
