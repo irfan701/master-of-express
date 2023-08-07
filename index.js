@@ -1,15 +1,15 @@
 const express=require('express')
 const app=express();
 
-app.use(express.json())  //which function will be used,it's called [Content-Type:application/json]
+app.use(express.text())  //which function will be used,it's called [Content-Type:text/plain]
 
 app.get('/',(req,res)=>{
     res.send('This is home page')
 })
 
 app.post('/',(req,res)=>{
-    console.log(typeof req.body) //[sending json data and receiving as an object with json]
-    console.log(req.body.name)
+
+    console.log(req.body)
     res.send('This is home page with post request')
 })
 
