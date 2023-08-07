@@ -1,21 +1,31 @@
 const express = require('express')
-const {mountpath} = require("express/lib/application");
-
-
 const app = express();
-const admin = express();
 
+//Methods
 
-app.get('/', (req, res) => {
+//app.enable('case sensitive routing')
+//app.disable('case sensitive routing')
+app.all('/about', (req, res) => {
     res.send("welcome to application home")
 })
 
-admin.get('/dashboard', (req, res) => {
-    console.log(admin.mountpath)
-    res.send("welcome to admin dashboard")
+app.param('id',(req,res,next,id)=>{
+
+    const user={
+        name:"Irfan",
+        age:"28"
+    }
+    req.userDetails=user
+    next();
+})
+app.get('/user/:id', (req, res) => {
+    console.log(req.userDetails)
+    res.send("welcome to application home")
 })
 
-app.use('/admin',admin)
+
+
+
 app.listen(3000, () => {
     console.log('listening on port 3000')
 })
