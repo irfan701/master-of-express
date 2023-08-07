@@ -1,18 +1,18 @@
-const express=require('express')
-const app=express();
+const express = require('express')
+const handle=require('./handle')
+const app = express();
 
-app.use(express.static(`${__dirname}/public/`,{
-    index:'home.html'
-}))  //which function will be used,it's called
+app.locals.title = "My App"
 
-app.get('/',(req,res)=>{
-    res.send('This is home page')
+//Method 1
+app.get('/', (req, res) => {
+    console.log(app.locals.title)
+    res.send("This is Home page")
 })
 
-app.post('/',(req,res)=>{
-    res.send('This is home page with post request')
-})
+//Method 2
+app.get('/handle',handle)
 
-app.listen(3000,()=>{
+app.listen(3000, () => {
     console.log('listening on port 3000')
 })
