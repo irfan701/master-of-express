@@ -12,7 +12,7 @@ adminRouter.get('/dashboard',(req,res)=>{
     console.log(req.ip)    //  ::1
     console.log(req.method)    //  GET
 
-    res.send('Admin Dashboard')git a
+    res.send('Admin Dashboard')
 
 })
 app.use('/admin',adminRouter)
