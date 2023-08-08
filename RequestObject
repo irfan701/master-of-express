@@ -1,0 +1,16 @@
+
+http://localhost:3000/user/3?filter=name,email
+
+req.baseurl         subapp
+req.originalUrl
+req.path            /user/3
+req.hostname        header ->'Host':'localhost'
+req.ip
+re.method
+req.protocol
+req.params              obj hisabey dibey
+req.query               obj
+req.body
+req.cookies
+req.signedCookies
+req.secure              http or https(true or false)
