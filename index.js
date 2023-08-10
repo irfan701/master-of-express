@@ -1,13 +1,8 @@
 const express=require('express')
 const app=express();
-app.use(express.json())
+const handler=require('./handler')
 
-app.get('/user',(req,res)=>{
-
-    console.log(req.secure)
-    res.send("http://localhost:3000/user/2?filter=shirt")
-
-})
+app.get('/user',handler)
 
 app.listen(3000,()=>{
     console.log('listening on port 3000')
