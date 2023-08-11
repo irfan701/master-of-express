@@ -13,7 +13,9 @@ app.get('/', (req, res) => {
     //  res.end()//without data to finish response
     //  res.sendStatus(200)
     //  res.json({name:'Bangladesh'}) //json stringify and set application/json in response header
+    res.status(200).send('execution finished')
 })
+
 app.listen(3000, () => {
     console.log('listening on port 3000')
 })
