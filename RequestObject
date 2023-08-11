@@ -1,0 +1,41 @@
+########### Server ###########
+
+http://localhost:3000/user/3?filter=name,email
+
+req.baseurl         subapp
+req.originalUrl
+req.path            /user/3
+req.hostname        header ->'Host':'localhost'
+req.ip
+re.method
+req.protocol
+req.params              obj hisabey dibey
+req.query               obj
+req.body
+req.cookies
+req.signedCookies
+req.secure              http or https(true or false)
+
+
+########### Browser ###########
+
+RESPONSE =reprensts the http response
+=>header
+
+res.app
+res.headersSent
+res.locals   //view er opor kaj korey
+res.cookie()
+res.clearCookie()
+res.end()
+res.send()
+res.json()
+res.status()
+res.sendStatus() //status set with res end
+res.render() //renders a view
+res.redirect()
+
+res.get() //returns HTTP reponse header
+res.set()// set response HTTP header to a value
+
+
