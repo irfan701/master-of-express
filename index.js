@@ -1,20 +1,27 @@
 const express = require('express')
 const app = express();
 
-app.set('view engine', 'ejs')
-app.get('/about', (req, res) => {
-    console.log(res.headersSent)
-    res.render('pages/about', {name: "Bangladesh"})
-    console.log(res.headersSent)
-})
 
 app.get('/', (req, res) => {
-    //  res.send("With Data") //with data and also finish response
-    //  res.end()//without data to finish response
-    //  res.sendStatus(200)
-    //  res.json({name:'Bangladesh'}) //json stringify and set application/json in response header
-    res.status(200).send('execution finished')
+
+    res.cookie('name',"Irfan",{})
+    res.send('cookie set')
 })
+
+app.get('/dubai', (req, res) => {
+    res.send('Hello World')
+})
+app.get('/bangladesh', (req, res) => {
+   res.redirect('/dubai')
+    res.end()
+})
+
+app.get('/setData', (req, res) => {
+    res.set('user',"irfanhossain701@gmail.com") //set response headers
+    console.log(res.get('user'))
+    res.end()
+})
+
 
 app.listen(3000, () => {
     console.log('listening on port 3000')
