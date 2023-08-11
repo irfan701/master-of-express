@@ -8,9 +8,12 @@ app.get('/about', (req, res) => {
     console.log(res.headersSent)
 })
 
-//kono akta module jodi kono akta place tekey response patay de.
-// .r tokon check korar jonno headerssent use kortey pare
-
-app.listen(3000,()=>{
+app.get('/', (req, res) => {
+    //  res.send("With Data") //with data and also finish response
+    //  res.end()//without data to finish response
+    //  res.sendStatus(200)
+    //  res.json({name:'Bangladesh'}) //json stringify and set application/json in response header
+})
+app.listen(3000, () => {
     console.log('listening on port 3000')
 })
