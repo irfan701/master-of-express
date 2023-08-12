@@ -1,19 +1,19 @@
 const express = require('express')
-const cookieParser=require('cookie-parser')
 const adminRouter=express.Router()
-
 const app = express();
 
-app.use(cookieParser())  //3rd party middleware in application level
-app.use(express.json())  // built-in middleware
-
-
-const logger=(req,res,next)=>{
-    console.log(`${new Date(Date.now()).toLocaleString()} - ${req.method} -${req.originalUrl} -${req.protocol} - ${req.hostname} - ${req.ip}` )
-    //next()
-    throw new Error("This is an error")
+const loggerWrapper=(options)=>{
+    return function(req,res,next){
+        if (options.log){
+            console.log(`${new Date(Date.now()).toLocaleString()} - ${req.method} -${req.originalUrl} -${req.protocol} - ${req.hostname} - ${req.ip}` )
+            next()
+        }else{
+            throw new Error("Failed to log")
+        }
+    }
 }
-adminRouter.use(logger)
+
+adminRouter.use(loggerWrapper({log:false}))
 
 //made a subapp
 adminRouter.get('/dashboard',(req,res)=>{
