@@ -1,7 +1,11 @@
 const express = require('express')
-const app = express();
+const cookieParser=require('cookie-parser')
 const adminRouter=express.Router()
 
+const app = express();
+
+app.use(cookieParser())  //3rd party middleware in application level
+app.use(express.json())  // built-in middleware
 
 
 const logger=(req,res,next)=>{
